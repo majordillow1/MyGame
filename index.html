@@ -1,0 +1,15 @@
+<html>
+<head>
+  <title>test</title>
+</head>
+<body>
+<script src="/socket.io/socket.io.js"></script>
+  <h1>Created servers!</h1>
+</body>
+<script>
+    var socket = io();
+    socket.on('connect', function(data) {
+        socket.emit('join', 'Hello World from client');
+    });
+</script>
+</html>
