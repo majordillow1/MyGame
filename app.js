@@ -5,6 +5,7 @@ var io = require('socket.io')(server);
 app.get('/',function(req,res,next){
   res.sendFile(__dirname+'/index.html');
 });
+app.use('/static', express.static(__dirname + '/static'));
 server.listen(process.env.PORT || 5000, function(){
   console.log("app listening on port");
 });
@@ -13,6 +14,9 @@ io.on('connection', function(client) {
 
     client.on('join', function(data) {
         console.log(data);
+    });
+    client.on('disconnect',function(){
+      console.log("client disconnected");
     });
 
 });
