@@ -12,11 +12,20 @@ server.listen(process.env.PORT || 5000, function(){
 io.on('connection', function(client) {
     console.log('Client connected...');
 
-    client.on('join', function(data) {
+    client.on('firstJoin', function(data) {
         console.log(data);
     });
     client.on('disconnect',function(){
       console.log("client disconnected");
+    });
+    client.on('createGame',function(){
+      document.getElementById("startbutton1").style.display = "none";
+      document.getElementById("startbutton2").style.display = "none";
+      console.log("client host game");
+
+    });
+    client.on('JoinLobby',function(){
+      console.log("loadlobby");
     });
 
 });
