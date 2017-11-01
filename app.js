@@ -19,8 +19,7 @@ io.on('connection', function(client) {
       console.log("client disconnected");
     });
     client.on('createGame',function(){
-      document.getElementById("startbutton1").style.display = "none";
-      document.getElementById("startbutton2").style.display = "none";
+    
       console.log("client host game");
 
     });
