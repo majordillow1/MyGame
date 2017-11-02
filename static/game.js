@@ -4,13 +4,43 @@ socket.on('connect', function(data) {
     //might not need this socket.emit('firstJoin', 'Hello World from client');
 
 });
+socket.on('hi',function(input){
+  console.log("you have joined" + input);
+});
+var games = [];
+socket.on('gamess',function(gamearray){
+
+  console.log("shouldve got something" + games);
+  games = gamearray;
+  console.log(games);
+  var doc = document, docFrag = document.createDocumentFragment();
+  for (var i = 0; i<games.length;i++){
+       var elem = doc.createElement('input');
+       elem.type = 'button';
+       elem.value = games[i].id;
+       elem.onclick = function(){
+         socket.emit('join game', games[0].id);
+       };
+       docFrag.appendChild(elem);
+       console.log("should add button");
+
+  }
+  doc.body.appendChild(docFrag);
+
+});
 function createGame(){
   document.getElementById("startbutton1").style.display = "none";
   document.getElementById("startbutton2").style.display = "none";
-  socket.emit('createGame');
+  var gameObject = {};
+     gameObject.id = (Math.random()+1).toString(36).slice(2, 18);
+     gameObject.playerOne = socket.id;
+     gameObject.playerTwo = null;
+     console.log("Game Created by "+ socket.id + " w/ " + gameObject.id);
+  socket.emit('createGame',gameObject);
+      socket.emit('join game', gameObject.id);
 
 }
-function JoinGame(){
+function JoinGame(soc){
   document.getElementById("startbutton1").style.display = "none";
   document.getElementById("startbutton2").style.display = "none";
   socket.emit('JoinLobby');
