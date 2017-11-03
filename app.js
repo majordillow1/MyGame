@@ -20,7 +20,8 @@ setInterval(
   function(){
 
     for(var i = 0;i<games.length;i++){
-      io.sockets.in('room' + games[i].id).emit('hi', games[i].id);
+      //use this to send messages to players in rooms
+      //io.sockets.in('room' + games[i].id).emit('hi', games[i].id);
 
       var clients = io.sockets.adapter.rooms['room'+games[i].id];
 
@@ -58,6 +59,7 @@ io.on('connection', function(client) {
     client.emit('gamess', games);
     });
     client.on('join game',function(s){
+      //let socket know they joined here
       client.join('room' + s);
       console.log("joined certain game" + s);
       client.emit('entergame');
