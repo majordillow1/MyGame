@@ -1,12 +1,17 @@
 <html>
 <head>
   <title>test</title>
+
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
 </head>
 <body>
 <script src="/socket.io/socket.io.js"></script>
   <h1>Created servers!</h1>
-  <button id="startbutton1" type = "button" onClick="createGame()">Host Game</button>
-  <button id="startbutton2" type = "button" onClick="JoinGame()">Join lobby</button>
+  <div id="buttons">
+  <input type = "button" id="startbutton1"  value="host game" onClick="createGame()" />
+  <input id="startbutton2" type = "button" onClick="JoinGame()" value ="Join Game"/>
+
+</div>
   
 </body>
 <script src="static/game.js">

@@ -4,9 +4,7 @@ socket.on('connect', function(data) {
     //might not need this socket.emit('firstJoin', 'Hello World from client');
 
 });
-socket.on('hi',function(input){
-  console.log("you have joined" + input);
-});
+
 var games = [];
 socket.on('gamess',function(gamearray){
 
@@ -16,12 +14,14 @@ socket.on('gamess',function(gamearray){
   var doc = document, docFrag = document.createDocumentFragment();
   for (var i = 0; i<games.length;i++){
        var elem = doc.createElement('input');
+       elem.class = 'lobbybutton';
        elem.type = 'button';
        elem.value = games[i].id;
        elem.onclick = function(){
          socket.emit('join game', games[0].id);
        };
-       docFrag.appendChild(elem);
+       var divin = document.getElementById("buttons");
+       divin.appendChild(elem);
        console.log("should add button");
 
   }
@@ -46,3 +46,15 @@ function JoinGame(soc){
   socket.emit('JoinLobby');
 
 }
+
+socket.on('hi',function(input){
+  //this does work
+  console.log("you have joined" + input +"test");
+});
+socket.on('entergame',function(){
+//handle clearing things out for the game
+var myNode = document.getElementById("buttons");
+while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+}
+});

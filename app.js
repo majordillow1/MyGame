@@ -28,13 +28,11 @@ setInterval(
 
         games.splice(i,1);
         console.log("removing game");
-      }else{
-        console.log("clients in room" + clients.length);
       }
 
     }
  },
- 1000/40);
+ 3000);
 
 
 
@@ -62,7 +60,7 @@ io.on('connection', function(client) {
     client.on('join game',function(s){
       client.join('room' + s);
       console.log("joined certain game" + s);
-
+      client.emit('entergame');
     });
 
 });
