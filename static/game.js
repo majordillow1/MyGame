@@ -17,6 +17,7 @@ socket.on('gamess',function(gamearray){
        elem.class = 'lobbybutton';
        elem.type = 'button';
        elem.value = games[i].id;
+       elem.style = "display:list-item;";
        elem.onclick = function(){
          socket.emit('join game', games[0].id);
        };
@@ -46,10 +47,20 @@ function JoinGame(soc){
   socket.emit('JoinLobby');
 
 }
+var username = "";
+function setUsername(){
+  username = document.getElementById("username").value;
+  document.getElementById("usernamediv").style.display = "none";
+  document.getElementById("chat").style.display = "inherit";
+  socket.emit('addPlayerList',username);
+}
 
 socket.on('hi',function(input){
   //this does work
   console.log("you have joined" + input +"test");
+});
+socket.on('addToPlayalist',function(usaname){
+  console.log("add " + usaname);
 });
 socket.on('entergame',function(){
 //handle clearing things out for the game
@@ -57,4 +68,6 @@ var myNode = document.getElementById("buttons");
 while (myNode.firstChild) {
     myNode.removeChild(myNode.firstChild);
 }
+document.getElementById("usernamediv").style.display = "inherit";
+
 });

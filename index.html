@@ -12,7 +12,14 @@
   <input id="startbutton2" type = "button" onClick="JoinGame()" value ="Join Game"/>
 
 </div>
-  
+<div id="usernamediv" style = "display:none;">
+  <input type = "text" id="username" value="enter a username">
+  <input type = "submit" id = "usernameSubmit" value="set username" onClick="setUsername()">
+</div>
+  <div id="chat" style = "display:none;">
+    <input type = "text" id = "chatValue" value = "enter message: ">
+    <input type = "submit" id="chatSend" value = "send message">
+  </div>
 </body>
 <script src="static/game.js">
 

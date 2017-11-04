@@ -64,5 +64,18 @@ io.on('connection', function(client) {
       console.log("joined certain game" + s);
       client.emit('entergame');
     });
+    client.on('addPlayerList',function(room){
+      //emit to update the player room list
+      let rooms = Object.keys(client.rooms)[1];
+     // [ <socket.id>, 'room 237' ]
+      console.log("your room sir " + rooms);
+      io.sockets.in(rooms).emit('addToPlayalist',room);
+    });
+
 
 });
+//need to add dynamic array. I will be an array of arrays
+//make an array that for each room holds an array
+//when a game is made it adds an arry to the array
+//when removed it removes it's array
+//add to the array and update server list everytim.
