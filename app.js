@@ -110,7 +110,8 @@ io.on('connection', function(client) {
       io.sockets.in(rooms).emit('addToPlayalist',usernamesperRoom[rooms]);
     });
     client.on('AddtoChat',function(chat){
-
+      let rooms = Object.keys(client.rooms)[1];
+        io.sockets.in(rooms).emit('addClientChat',chat,client.username);
     });
 
 

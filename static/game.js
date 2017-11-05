@@ -56,9 +56,15 @@ function setUsername(){
 }
 var chat = "";
 function sendChat(){
-
+chat = document.getElementById("chatValue").value;
+socket.emit('AddtoChat',chat);
 }
-
+socket.on('addClientChat',function(chatsin,usain){
+  var para = document.createElement('p');
+  var chattext = document.createTextNode(usain + ": " + chatsin);
+  para.appendChild(chattext);
+  document.getElementById('chat').appendChild(para);
+});
 socket.on('addToPlayalist',function(usaname){
   var myNode = document.getElementById("playerList");
   while (myNode.firstChild) {

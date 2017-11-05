@@ -15,3 +15,6 @@ body{
 #playerList{
   float:right;
 }
+#chat{
+  background-color:white;
+}
