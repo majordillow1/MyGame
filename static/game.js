@@ -54,13 +54,41 @@ function setUsername(){
   document.getElementById("chat").style.display = "inherit";
   socket.emit('addPlayerList',username);
 }
+var chat = "";
+function sendChat(){
 
-socket.on('hi',function(input){
-  //this does work
-  console.log("you have joined" + input +"test");
-});
+}
+
 socket.on('addToPlayalist',function(usaname){
-  console.log("add " + usaname);
+  var myNode = document.getElementById("playerList");
+  while (myNode.firstChild) {
+      myNode.removeChild(myNode.firstChild);
+  }
+  var userArray = usaname.split("--/");
+  console.log("add " + userArray);
+  for(var i in userArray){
+  var playa =  document.createElement('p');
+  var textnode = document.createTextNode(userArray[i]);         // Create a text node
+playa.appendChild(textnode);
+
+    document.getElementById('playerList').appendChild(playa);
+  }
+});
+socket.on('RemovefromPlayaList',function(user){
+console.log("remove "+user);
+var myNode = document.getElementById("playerList");
+while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+}
+
+for(var i in user){
+var playa =  document.createElement('p');
+var textnode = document.createTextNode(user[i]);         // Create a text node
+playa.appendChild(textnode);
+
+  document.getElementById('playerList').appendChild(playa);
+}
+
 });
 socket.on('entergame',function(){
 //handle clearing things out for the game
