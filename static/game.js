@@ -13,22 +13,33 @@ socket.on('gamess',function(gamearray){
   console.log(games);
   var doc = document, docFrag = document.createDocumentFragment();
   for (var i = 0; i<games.length;i++){
-       var elem = doc.createElement('input');
-       elem.class = 'lobbybutton';
+    var test = games[i].id;
+  /*    var elem = doc.createElement('input');
+       elem.id = test;
+       //elem.class = test;
        elem.type = 'button';
-       elem.value = games[i].id;
+       elem.value = test;
        elem.style = "display:list-item;";
-       elem.onclick = function(){
-         socket.emit('join game', games[0].id);
-       };
+       elem.addEventListener('click', function(){
+     entertheGame(test);
+
+ });
        var divin = document.getElementById("buttons");
-       divin.appendChild(elem);
-       console.log("should add button");
+       divin.appendChild(elem);*/
+       var span = document.createElement('span');
+span.innerHTML = '<input type="button" id="'+test+'"  onclick="entertheGame(\'' + test + '\')"  value = "'+games[i].name+'">';
+var divin = document.getElementById("buttons");
+divin.appendChild(span);
+       console.log("should add button for" + test);
 
   }
-  doc.body.appendChild(docFrag);
+  //doc.body.appendChild(docFrag);
 
 });
+function entertheGame(input){
+   socket.emit('join game', input);
+   console.log("should join " + input);
+}
 function createGame(){
   document.getElementById("startbutton1").style.display = "none";
   document.getElementById("startbutton2").style.display = "none";
@@ -36,6 +47,7 @@ function createGame(){
      gameObject.id = (Math.random()+1).toString(36).slice(2, 18);
      gameObject.playerOne = socket.id;
      gameObject.playerTwo = null;
+     gameObject.name = document.getElementById("testName").value;
      console.log("Game Created by "+ socket.id + " w/ " + gameObject.id);
   socket.emit('createGame',gameObject);
       socket.emit('join game', gameObject.id);
@@ -44,6 +56,7 @@ function createGame(){
 function JoinGame(soc){
   document.getElementById("startbutton1").style.display = "none";
   document.getElementById("startbutton2").style.display = "none";
+  document.getElementById("testName").style.display = "none";
   socket.emit('JoinLobby');
 
 }

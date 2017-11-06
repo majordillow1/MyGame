@@ -47,16 +47,16 @@ io.on('connection', function(client) {
       if(client.username != null){
         //find room
         let rooms = Object.keys(client.rooms)[1];
-        console.log(rooms + " disconnected from " + client.username);
+        //console.log(rooms + " disconnected from " + client.username);
         //this is the array of the string rigtht
         var removeArray = usernamesperRoom[rooms].split("--/");
         for(var i in removeArray){
-          console.log("array now" + i);
+          //console.log("array now" + i);
         }
         //go through and find it and delete it
         var index = removeArray.indexOf(client.username);
         removeArray.splice(index,1);
-        console.log("array becomes " + i);
+        //console.log("array becomes " + i);
         //send it with new...oh
         io.sockets.in(rooms).emit('RemovefromPlayaList',removeArray);
         usernamesperRoom[rooms] = null;
@@ -73,22 +73,23 @@ io.on('connection', function(client) {
         }
 
       }
-      console.log("disconnect");
+    //  console.log("disconnect");
     });
     client.on('createGame',function(g){
     games.push(g);
 
-      console.log("client host game " + g.id);
+      //console.log("client host game " + g.id);
 
 
     });
     client.on('JoinLobby',function(){
-      console.log("loadlobby");
+      //console.log("loadlobby");
     client.emit('gamess', games);
     });
     client.on('join game',function(s){
       //let socket know they joined here
       client.join('room' + s);
+
       console.log("joined certain game" + s);
       client.emit('entergame');
     });
@@ -97,7 +98,7 @@ io.on('connection', function(client) {
 
       let rooms = Object.keys(client.rooms)[1];
       client.username = usernames;
-      console.log("added " + usernames);
+      //console.log("added " + usernames);
      // [ <socket.id>, 'room 237' ]
      //set this rooms username list to get bigger
      if(usernamesperRoom[rooms]==null){
