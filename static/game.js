@@ -46,6 +46,7 @@ function createGame(){
  if (!gamename.match(/\S/)){
   alert("name your game!");
 }else{
+    document.getElementById("refresh").style.display = "inherit";
   document.getElementById("startbutton1").style.display = "none";
   document.getElementById("startbutton2").style.display = "none";
   var gameObject = {};
@@ -61,12 +62,16 @@ function createGame(){
 
 }
 function JoinGame(soc){
+  document.getElementById("refresh").style.display = "inherit";
   document.getElementById("startbutton1").style.display = "none";
   document.getElementById("startbutton2").style.display = "none";
   document.getElementById("testName").style.display = "none";
     document.getElementById("promptforname").style.display = "none";
   socket.emit('JoinLobby');
 
+}
+function leaveGame(){
+  location.reload();
 }
 var username = "";
 function setUsername(){
