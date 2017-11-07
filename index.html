@@ -10,7 +10,7 @@
   <div id="buttons">
   <input type = "button" id="startbutton1"  value="host game" onClick="createGame()" />
   <input id="startbutton2" type = "button" onClick="JoinGame()" value ="Join Game"/>
-  <p style = "color:yellow;">Please enter a Name for your Game!</p>
+  <p id="promptforname" style = "color:yellow;">Please enter a Name for your Game!</p>
 <input id="testName" type="text"onclick="this.select();" value="">
 </div>
 <div id="usernamediv" style = "display:none;">
@@ -18,7 +18,7 @@
   <input type = "submit" id = "usernameSubmit" value="set username" onClick="setUsername()">
 </div>
   <div id="chat" style = "display:none;">
-    <input type = "text"onclick="this.select()" id = "chatValue" value = "enter message: ">
+    <input type = "text"onKeyDown="if(event.keyCode==13)sendChat(); "onclick="this.select()" id = "chatValue" value = "enter message: ">
     <input type = "submit" id="chatSend" onClick="sendChat()" value = "send message">
   </div>
   <div id="chatList">

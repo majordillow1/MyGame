@@ -64,6 +64,7 @@ function JoinGame(soc){
   document.getElementById("startbutton1").style.display = "none";
   document.getElementById("startbutton2").style.display = "none";
   document.getElementById("testName").style.display = "none";
+    document.getElementById("promptforname").style.display = "none";
   socket.emit('JoinLobby');
 
 }
