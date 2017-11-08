@@ -31,10 +31,30 @@ body{
 
 }
 #buttons{
+  text-align: center;
+  width:50%;
+  
+  margin-left: auto ;
+  margin-right: auto ;
+
+}
+#usernamediv input[type=button], input[type=submit], input[type=reset] {
+    background-color: DimGray;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: auto auto;
+    cursor: pointer;
+
+
+}
+#usernamediv{
+  text-align: center;
   width:50%;
   height:50%;
-  margin: 0 auto;
-
+  margin-left: auto ;
+  margin-right: auto ;
 }
 #refresh{
 float:right;
