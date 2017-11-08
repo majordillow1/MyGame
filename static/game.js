@@ -15,6 +15,7 @@ socket.on('gamess',function(gamearray){
   games = gamearray;
   console.log(games);
   var doc = document, docFrag = document.createDocumentFragment();
+  if(games.length >= 1){
   for (var i = 0; i<games.length;i++){
     var test = games[i].id;
   /*    var elem = doc.createElement('input');
@@ -34,7 +35,11 @@ span.innerHTML = '<input type="button" id="'+test+'"  onclick="entertheGame(\'' 
 var divin = document.getElementById("lobbylist");
 divin.appendChild(span);
        console.log("should add button for" + test);
+     }
 
+  }else{
+    document.getElementById("same").style.display = "inherit";
+    document.getElementById("lobbylist").style.pointerEvents  = "none";
   }
   //doc.body.appendChild(docFrag);
 

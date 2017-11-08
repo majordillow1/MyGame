@@ -13,6 +13,7 @@ body{
 
 }
 #lobbylist{
+  width:100%;
   position:fixed;
   top:50px;
   left:0;
@@ -33,7 +34,7 @@ body{
 #buttons{
   text-align: center;
   width:50%;
-  
+
   margin-left: auto ;
   margin-right: auto ;
 
@@ -49,10 +50,16 @@ body{
 
 
 }
+#same {
+display:none;
+  margin-left:auto;
+  margin-right:auto;
+  pointer-events:none;
+}
 #usernamediv{
   text-align: center;
   width:50%;
-  height:50%;
+
   margin-left: auto ;
   margin-right: auto ;
 }
