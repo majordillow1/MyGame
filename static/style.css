@@ -1,9 +1,9 @@
 body{
-  background-color:green;
+  background-color:silver;
 }
 
 #buttons input[type=button], input[type=submit], input[type=reset] {
-    background-color: #4CAF50;
+    background-color: DimGray;
     border: none;
     color: white;
     padding: 16px 32px;
@@ -12,12 +12,36 @@ body{
     cursor: pointer;
 
 }
+#lobbylist{
+  position:fixed;
+  top:50px;
+  left:0;
+
+
+}
+#lobbylist input[type=button], input[type=submit], input[type=reset] {
+    background-color: DimGray;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  display:list-item;
+
+}
+#buttons{
+  width:50%;
+  height:50%;
+  margin: 0 auto;
+
+}
 #refresh{
 float:right;
 }
 #refresh{
   display:none;
-  background-color: #4CAF50;
+  background-color: DimGray;
   border: none;
   color: white;
   padding: 16px 32px;

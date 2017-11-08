@@ -7,7 +7,10 @@ console.log("did connect");
 
 var games = [];
 socket.on('gamess',function(gamearray){
-
+  var myNode = document.getElementById("buttons");
+  while (myNode.firstChild) {
+      myNode.removeChild(myNode.firstChild);
+  }
   console.log("shouldve got something" + games);
   games = gamearray;
   console.log(games);
@@ -28,7 +31,7 @@ socket.on('gamess',function(gamearray){
        divin.appendChild(elem);*/
        var span = document.createElement('span');
 span.innerHTML = '<input type="button" id="'+test+'"  onclick="entertheGame(\'' + test + '\')"  value = "'+games[i].name+'">';
-var divin = document.getElementById("buttons");
+var divin = document.getElementById("lobbylist");
 divin.appendChild(span);
        console.log("should add button for" + test);
 
@@ -139,6 +142,10 @@ socket.on('entergame',function(){
 var myNode = document.getElementById("buttons");
 while (myNode.firstChild) {
     myNode.removeChild(myNode.firstChild);
+}
+var myNodelist = document.getElementById("lobbylist");
+while (myNodelist.firstChild) {
+    myNodelist.removeChild(myNodelist.firstChild);
 }
 document.getElementById("usernamediv").style.display = "inherit";
 
