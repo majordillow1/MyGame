@@ -80,6 +80,7 @@ function setUsername(){
   document.getElementById("chat").style.display = "inherit";
   document.getElementById("chatList").style.display = "inherit";
   socket.emit('addPlayerList',username);
+  document.getElementById('playerlistholder').style.display="inherit";
 }
 var chat = "";
 function sendChat(){
@@ -99,7 +100,8 @@ socket.on('addClientChat',function(chatsin,usain){
 
 
   document.getElementById('chatList').appendChild(para);
-
+var chatlistdoc = document.getElementById('chatList');
+chatlistdoc.scrollTop = chatlistdoc.scrollHeight;
 });
 socket.on('addToPlayalist',function(usaname){
   var myNode = document.getElementById("playerList");

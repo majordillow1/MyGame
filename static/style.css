@@ -12,8 +12,8 @@ body{
     cursor: pointer;
 
 }
-#playerList{
-  float:right;
+#refresh{
+float:right;
 }
 #refresh{
   display:none;
@@ -25,7 +25,20 @@ body{
   margin: 4px 2px;
   cursor: pointer;
 }
+#chatholder{
+  position: fixed;
+    bottom: 0;
+    right: 0;
+}
+#playerlistholder{
+  display:none;
+  position: fixed;
+    top: 0;
+    left: 0;
+}
+
 #chatList{
+
   display:none;
   background-color:white;
   margin-top:5px;

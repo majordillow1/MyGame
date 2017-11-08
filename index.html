@@ -6,7 +6,7 @@
 </head>
 <body>
 <script src="/socket.io/socket.io.js"></script>
-  <h1>Created servers!</h1>
+  <h1 style="text-align:center;">Created servers!</h1>
   <div id="buttons">
 
   <input type = "button" id="startbutton1"  value="host game" onClick="createGame()" />
@@ -19,14 +19,21 @@
   <input type = "text"onclick="this.select()" id="username" value="enter a username">
   <input type = "submit" id = "usernameSubmit" value="set username" onClick="setUsername()">
 </div>
+<div id="chatholder">
+  <div id="chatList">
+  </div>
   <div id="chat" style = "display:none;">
     <input type = "text"onKeyDown="if(event.keyCode==13)sendChat(); "onclick="this.select()" id = "chatValue" value = "enter message: ">
     <input type = "submit" id="chatSend" onClick="sendChat()" value = "send message">
   </div>
-  <div id="chatList">
-  </div>
+
+</div>
+<div id="playerlistholder">
+  <h2>Players in Lobby</h2>
   <div id="playerList">
+
   </div>
+</div>
 </body>
 <script src="static/game.js">
 
