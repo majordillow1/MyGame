@@ -42,7 +42,7 @@ divin.appendChild(span);
     document.getElementById("lobbylist").style.pointerEvents  = "none";
   }
   //doc.body.appendChild(docFrag);
-
+//fix send message button not lining up
 });
 function entertheGame(input){
    socket.emit('join game', input);
