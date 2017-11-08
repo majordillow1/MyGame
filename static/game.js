@@ -76,7 +76,9 @@ socket.on('addClientChat',function(chatsin,usain){
   var para = document.createElement('p');
   var chattext = document.createTextNode(usain + ": " + chatsin);
   para.appendChild(chattext);
+  para.scrollTop = para.scrollHeight;
   document.getElementById('chat').appendChild(para);
+
 });
 socket.on('addToPlayalist',function(usaname){
   var myNode = document.getElementById("playerList");
