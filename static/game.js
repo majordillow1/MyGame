@@ -41,43 +41,64 @@ function entertheGame(input){
    console.log("should join " + input);
 }
 function createGame(){
+
+  var gamename = document.getElementById("testName").value;
+ if (!gamename.match(/\S/)){
+  alert("name your game!");
+}else{
+    document.getElementById("refresh").style.display = "inherit";
   document.getElementById("startbutton1").style.display = "none";
   document.getElementById("startbutton2").style.display = "none";
   var gameObject = {};
      gameObject.id = (Math.random()+1).toString(36).slice(2, 18);
      gameObject.playerOne = socket.id;
      gameObject.playerTwo = null;
-     gameObject.name = document.getElementById("testName").value;
+     gameObject.name = gamename;
      console.log("Game Created by "+ socket.id + " w/ " + gameObject.id);
   socket.emit('createGame',gameObject);
       socket.emit('join game', gameObject.id);
+}
+
 
 }
 function JoinGame(soc){
+  document.getElementById("refresh").style.display = "inherit";
   document.getElementById("startbutton1").style.display = "none";
   document.getElementById("startbutton2").style.display = "none";
   document.getElementById("testName").style.display = "none";
+    document.getElementById("promptforname").style.display = "none";
   socket.emit('JoinLobby');
 
+}
+function leaveGame(){
+  location.reload();
 }
 var username = "";
 function setUsername(){
   username = document.getElementById("username").value;
   document.getElementById("usernamediv").style.display = "none";
   document.getElementById("chat").style.display = "inherit";
+  document.getElementById("chatList").style.display = "inherit";
   socket.emit('addPlayerList',username);
 }
 var chat = "";
 function sendChat(){
-chat = document.getElementById("chatValue").value;
+  chat = document.getElementById("chatValue").value;
+   if (chat.match(/\S/)){
+
 socket.emit('AddtoChat',chat);
+document.getElementById("chatValue").value = "";
+}
 }
 socket.on('addClientChat',function(chatsin,usain){
   var para = document.createElement('p');
   var chattext = document.createTextNode(usain + ": " + chatsin);
   para.appendChild(chattext);
-  para.scrollTop = para.scrollHeight;
+
   document.getElementById('chat').appendChild(para);
+
+
+  document.getElementById('chatList').appendChild(para);
 
 });
 socket.on('addToPlayalist',function(usaname){

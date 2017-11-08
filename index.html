@@ -8,19 +8,22 @@
 <script src="/socket.io/socket.io.js"></script>
   <h1>Created servers!</h1>
   <div id="buttons">
+
   <input type = "button" id="startbutton1"  value="host game" onClick="createGame()" />
   <input id="startbutton2" type = "button" onClick="JoinGame()" value ="Join Game"/>
-<input id="testName" type="text">
+  <p id="promptforname" style = "color:yellow;">Please enter a Name for your Game!</p>
+<input id="testName" type="text"onclick="this.select();" value="">
 </div>
+<input type="button" id="refresh" value="leave game" onClick="leaveGame()"/>
 <div id="usernamediv" style = "display:none;">
-  <input type = "text" id="username" value="enter a username">
+  <input type = "text"onclick="this.select()" id="username" value="enter a username">
   <input type = "submit" id = "usernameSubmit" value="set username" onClick="setUsername()">
 </div>
   <div id="chat" style = "display:none;">
-    <input type = "text" id = "chatValue" value = "enter message: ">
+    <input type = "text"onKeyDown="if(event.keyCode==13)sendChat(); "onclick="this.select()" id = "chatValue" value = "enter message: ">
     <input type = "submit" id="chatSend" onClick="sendChat()" value = "send message">
   </div>
-  <div id="chat">
+  <div id="chatList">
   </div>
   <div id="playerList">
   </div>
